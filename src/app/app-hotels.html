@@ -1,0 +1,13 @@
+<h1>{{ title }}</h1>
+<div class="element">
+  <div class="element-left">
+    <app-list
+    [currentHotel]="currentHotel"
+    (currentHotelId)="setCurrentHotel($event)"
+    ></app-list>
+  </div>
+  <div class="element-right">
+    <app-weather [currentWeather]="currentWeather"></app-weather>
+    <app-profile [currentProfile]="currentProfile"></app-profile>
+  </div>
+</div>
