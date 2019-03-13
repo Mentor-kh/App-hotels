@@ -1,22 +1,17 @@
 <div class="element-bg-img"><img src="{{ currentHotel.picture }}" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
-  <div class="ele-strip">
-    <ul>
-      <li><a href="index.html#">Hotel</a></li>
-      <li><a href="index.html#">Fishing</a></li>
-      <li><a href="index.html#">Tours</a></li>
-      <li class="anc-bor"><a href="index.html#">Weather</a></li>
-    </ul>
-  </div>
+  <app-filter
+    (filteredHotelsExport)="filterHotels($event)"
+  ></app-filter>
   <div class="village">
     <h3>{{ title }}</h3>
     <span class="line"> </span>
     <div class="activity_box">
       <div class="scrollbar" id="style-2">
         <div
+        *ngFor="let hotel of hotels; let i = index"
         class="activity-row"
-        [ngClass]="{'active': hotel.id === currentHotel.id}"
-        *ngFor="let hotel of hotels"
+        [ngClass]="{'active': hotel.id === currentHotel.id, 'odd': i % 2 !== 0 }"
         (click)="setCurrentHotel(hotel)"
         >
           <div class="activity-desc">
@@ -31,6 +26,7 @@
             </ul>
           </div>
           <div class="clear"></div>
+          <a (click)="addToFavorites($event, hotel)" href="#" class="btn-link">Add to favorites</a>
         </div>
       </div>
     </div>

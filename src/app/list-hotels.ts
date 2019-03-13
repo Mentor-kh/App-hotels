@@ -1,4 +1,4 @@
-import { Hotel } from './hotel';
+import { Hotel } from './dataTypes';
 
 export const HOTELS: Hotel[] = [
   {
@@ -69,5 +69,74 @@ export const HOTELS: Hotel[] = [
       photo: '../assets/images/b1.jpg'
     },
     stars: 5
+  },
+  {
+    id: 33,
+    title: 'Universal Caban1a',
+    address: 'Orlando',
+    description: 'Best one!',
+    phone: '+3242353434',
+    picture: '../assets/images/1.jpg',
+    photos: [
+      '../assets/images/res.jpg',
+      '../assets/images/r1.jpg'
+    ],
+    weather:  {
+      temperature: 21,
+      wind: 2,
+      icon: 'rain'
+    },
+    profile: {
+      followers: 45,
+      following: 888,
+      photo: '../assets/images/b1.jpg'
+    },
+    stars: 5
+  },
+  {
+    id: 23,
+    title: 'Kharkov plaza1',
+    address: 'Kharkov',
+    description: 'Five Stars',
+    phone: '+3242353434',
+    picture: '../assets/images/2.jpg',
+    photos: [
+      '../assets/images/res.jpg',
+      '../assets/images/r1.jpg'
+    ],
+    weather:  {
+      temperature: 25,
+      wind: 14,
+      icon: 'sun'
+    },
+    profile: {
+      followers: 211,
+      following: 1213,
+      photo: '../assets/images/r1.jpg'
+    },
+    stars: 4
+  },
+  {
+    id: 12,
+    title: 'Hotel name1',
+    address: 'Orlando',
+    description: 'Lorem ipson0',
+    phone: '+3242353434',
+    picture: '../assets/images/1.jpg',
+    photos: [
+      '../assets/images/res.jpg',
+      '../assets/images/r1.jpg'
+    ],
+    weather:  {
+      temperature: -22,
+      wind: 222,
+      icon: 'cloud'
+    },
+    profile: {
+      followers: 145,
+      following: 178,
+      photo: '../assets/images/b1.jpg'
+    },
+    stars: 1
   },
 ];

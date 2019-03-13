@@ -2,12 +2,24 @@
 <div class="element">
   <div class="element-left">
     <app-list
+    [hotels]="hotels"
     [currentHotel]="currentHotel"
-    (currentHotelId)="setCurrentHotel($event)"
+    (currentHotelId)="setHotel($event)"
+    [favoriteHotels]="favoriteHotels"
+    (favoriteHotelsExport)="changeFavorites($event)"
     ></app-list>
   </div>
   <div class="element-right">
-    <app-weather [currentWeather]="currentWeather"></app-weather>
-    <app-profile [currentProfile]="currentProfile"></app-profile>
+    <app-weather [currentWeather]="currentHotel.weather"></app-weather>
+    <app-profile [currentProfile]="currentHotel.profile"></app-profile>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="element">
+  <div class="element-left">
+    <app-favorites
+    [favoriteHotels]="favoriteHotels"
+    (favoriteHotelsExport)="changeFavorites($event)"
+    ></app-favorites>
   </div>
 </div>

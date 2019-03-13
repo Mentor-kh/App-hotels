@@ -40,8 +40,8 @@ img{max-width:100%;}
 /*--login start here--*/
  body{
   font-family: 'Roboto', sans-serif;
-   font-size: 100%;
-   background:#313144; 
+  font-size: 90%;
+  background:#313144; 
 }
 a {
   text-decoration: none;
@@ -60,9 +60,23 @@ h1 {
   margin: 3em 0em 2em 0em;
   font-family: 'Quicksand', sans-serif;
 }
+h2 {
+  font-size: 1.3rem;
+}
+.favorites {
+  padding: 20px;
+  border-radius: 5px;
+  background: lightgreen;
+}
+.favorites ul {
+  padding-top: 20px;
+}
+.btn-link {text-decoration: underline;}
+.btn-link:hover {text-decoration: none;}
 .element {
   width: 40%;
-  margin: 0 auto 7em;
+  margin: 0 auto 2.5em;
+  overflow: hidden;
 }
 .ele-strip {
   background: #fda660;
@@ -146,21 +160,50 @@ span.w-line {
   background: #f1f1f1;
 }
 span.rain {
-    background: gray;
-    width: 50px;
-    height: 50px;
-    display: inline-block;
+  position: relative;
+  background: gray;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 25% 80%;
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+span.rain:before,
+span.rain:after {
+  content: '';
+  width: 3px;
+  height: 10px;
+  background: gray;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: 3px;
+  transform: rotate(90deg);
+  margin-left: 20px;
+}
+span.rain:after {
+  margin-left: -10px;
+  margin-top: -20px;
 }
 span.sun {
     background: yellow;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
+    vertical-align: top;
+    margin-top: 5px;
+    margin-right: 10px;
+    box-shadow: 0 0 20px yellow;
     display: inline-block;
 }
 span.cloud {
   background: url(/assets/images/cloudy.png)no-repeat;
   width: 50px;
   height: 50px;
+  margin-top: 5px;
+  margin-right: 10px;
+  vertical-align: top;
   display: inline-block;
 }
 .element-left {
@@ -216,6 +259,30 @@ ul li.anc-bor {
 .activity-row, .activity-row1{
   text-align: left;
 }
+.activity-row.odd {
+  background: #c1ffc1;
+}
+.search {
+  padding-top: 8px;
+  text-align: center;
+}
+.search label {
+  margin-right: 5px;
+}
+.filter input{
+  display: none;
+}
+.filter input + span {
+  color: white;
+  cursor: pointer;
+}
+.filter-heading {
+  display: block;
+  text-align: center;
+}
+.filter input:checked + span {
+  color: black;
+}
 i.text-info{
   float: left;
   line-height: 60px;
@@ -239,7 +306,7 @@ i.text-info{
 .activity-desc p{
   color:#999;
   font-size:0.94em;
-  line-height:1.7em;
+  line-height:1.4;
 }
 .activity-desc h6 {
     color: #fd7b87;
@@ -248,13 +315,14 @@ i.text-info{
     font-weight: bold;
 }
 .activity-row{
+  padding: 5px;
   margin-bottom:1em;
 }
 .scrollbar{
   height:115px;
   background:#fff;
   overflow-y: scroll;
-       padding: 1em 1em 0em 1em;
+  padding: 1em 1em 0em .5em;
 }
 .activity_box{
   background: #fff;
@@ -279,11 +347,11 @@ i.text-info{
 }
 .activity-desc {
     float: left;
-    width: 50%;
+    width: 60%;
 }
 .activity-img {
     float: right;
-    width: 50%;
+    width: 40%;
 }
 .activity-img ul li {
     display: inline-block;

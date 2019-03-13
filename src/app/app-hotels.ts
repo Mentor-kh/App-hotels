@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { HOTELS } from './list-hotels';
-import { Hotel } from './hotel';
+import { Hotel } from './dataTypes';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +8,17 @@ import { Hotel } from './hotel';
   styleUrls: ['./app-hotels.css']
 })
 export class AppComponent {
-  title = 'Hot Weather Widget';
-  hotels: Hotel[];
-  currentHotel: Hotel;
-  currentWeather: { [key: string]: number | string };
-  currentProfile: { [key: string]: number | string };
-  @Input() currentHotelId: EventEmitter<any> = new EventEmitter();
+  public title: string = 'Hot Weather Widget';
+  public hotels: Hotel[] = HOTELS;
+  public favoriteHotels: Hotel[] = [];
+  public currentHotel: Hotel =  this.hotels[0];
+  @Input() public currentHotelId: EventEmitter<number> = new EventEmitter();
+  @Input() public favoriteHotelsExport: EventEmitter<Hotel[]> = new EventEmitter();
 
-  setCurrentHotel(id: EventEmitter<number>): void {
-    this.setHotel(id);
+  public changeFavorites(favoriteHotels: Hotel[]): void {
+    this.favoriteHotels = favoriteHotels;
   }
-
-  setHotel(id): void {
-    this.currentHotel = HOTELS[id];
-    this.currentWeather = this.currentHotel.weather;
-    this.currentProfile = this.currentHotel.profile;
+  private setHotel(id: EventEmitter<number>): void {
+    this.currentHotel = this.hotels.find((hotel: Hotel) => +id === hotel.id);
   }
-
-  ngOnInit() {
-    this.setHotel(0);
-  }
-};
+}
