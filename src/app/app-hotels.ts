@@ -18,7 +18,7 @@ export class AppComponent {
   public changeFavorites(favoriteHotels: Hotel[]): void {
     this.favoriteHotels = favoriteHotels;
   }
-  private setHotel(id: EventEmitter<number>): void {
+  public setHotel(id: EventEmitter<number>): void {
     this.currentHotel = this.hotels.find((hotel: Hotel) => +id === hotel.id);
   }
 }

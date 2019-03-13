@@ -7,5 +7,5 @@ import { Hotel } from '../../dataTypes';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent {
-  @Input() private currentWeather: { [key: string]: number | string };
+  @Input() public currentWeather: { [key: string]: number | string };
 }

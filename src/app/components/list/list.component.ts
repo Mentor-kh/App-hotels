@@ -32,7 +32,7 @@ export class ListComponent {
     }
   }
 
-  private filterHotels(filteredHotelsExport: EventEmitter<Hotel[]>): void {
+  public filterHotels(filteredHotelsExport: EventEmitter<Hotel[]>): void {
     this.hotels = filteredHotelsExport;
   }
 }
