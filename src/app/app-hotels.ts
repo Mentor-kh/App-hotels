@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { HOTELS } from './list-hotels';
-import { Hotel } from './dataTypes';
+import { IHotel } from './dataTypes';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +9,27 @@ import { Hotel } from './dataTypes';
 })
 export class AppComponent {
   public title: string = 'Hot Weather Widget';
-  public hotels: Hotel[] = HOTELS;
-  public favoriteHotels: Hotel[] = [];
-  public currentHotel: Hotel =  this.hotels[0];
-  @Input() public currentHotelId: EventEmitter<number> = new EventEmitter();
-  @Input() public favoriteHotelsExport: EventEmitter<Hotel[]> = new EventEmitter();
+  public hotels: IHotel[] = HOTELS;
+  public favoriteHotels: IHotel[] = [];
+  public activeHotel: IHotel =  this.hotels[0];
+  @Input() public activeHotelEmit: EventEmitter<IHotel> = new EventEmitter();
+  @Input() public removeFromFavorites: EventEmitter<IHotel> = new EventEmitter();
+  @Input() public addFavoriteHotel: EventEmitter<IHotel> = new EventEmitter();
 
-  public changeFavorites(favoriteHotels: Hotel[]): void {
-    this.favoriteHotels = favoriteHotels;
+  public addToFavorites(addFavoriteHotel: IHotel): void {
+    if (this.favoriteHotels &&
+    !this.favoriteHotels.find((favoriteHotel: IHotel) => addFavoriteHotel.id === favoriteHotel.id)) {
+      this.favoriteHotels.push(addFavoriteHotel);
+    } else {
+      alert('This hotel already exist in favorites');
+    }
   }
-  public setHotel(id: EventEmitter<number>): void {
-    this.currentHotel = this.hotels.find((hotel: Hotel) => +id === hotel.id);
+
+  public removeFavoriteHotel(removeFromFavorites: IHotel): void {
+    this.favoriteHotels = this.favoriteHotels.filter((hotel: IHotel) => hotel !== removeFromFavorites);
+  }
+
+  public setActiveHotel(activeHotel: IHotel): void {
+    this.activeHotel = this.hotels.find((hotel: IHotel) => activeHotel === hotel);
   }
 }

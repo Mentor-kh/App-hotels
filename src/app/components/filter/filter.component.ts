@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Hotel, IFilterType } from '../../dataTypes';
+import { IFilterType, IHotel } from '../../dataTypes';
 import { HOTELS } from '../../list-hotels';
 
 @Component({
@@ -12,23 +12,22 @@ export class FilterComponent {
     stars: '*',
     search: ''
   };
-  public filteredHotels: Hotel[] = [];
-  @Input() public hotels: Hotel[];
-  @Output() public filteredHotelsExport: EventEmitter<Hotel[]> = new EventEmitter<Hotel[]>();
+  public filteredHotels: IHotel[] = [];
+  public searchValue: string;
+  public starsValue: string | number;
+  @Input() public hotels: IHotel[];
+  @Output() public searchValueExport: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public starsValueExport: EventEmitter<string | number> = new EventEmitter<string | number>();
 
   public ngDoCheck(): void {
     this.hotels = HOTELS;
-    this.filterHotels();
+    this.searchValue = this.filter.search.toLowerCase();
+    this.starsValue = this.filter.stars;
+    this.emitFilters();
   }
 
-  public filterHotels(): void {
-    const searchValue: string = this.filter.search.toLowerCase();
-    const starsValue: string | number = this.filter.stars;
-    this.filteredHotels = this.hotels.filter((hotel: Hotel) =>
-      (hotel.stars === +starsValue || starsValue === '*') &&
-      (hotel.title.toLowerCase().includes(searchValue) ||
-      hotel.description.toLowerCase().includes(searchValue))
-    );
-    this.filteredHotelsExport.emit(this.filteredHotels);
+  public emitFilters(): void {
+    this.searchValueExport.emit(this.searchValue);
+    this.starsValueExport.emit(this.starsValue);
   }
 }

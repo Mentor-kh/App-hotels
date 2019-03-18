@@ -1,17 +1,17 @@
-export class Hotel {
-  public id: number;
-  public title: string;
-  public address: string;
-  public description: string;
-  public phone: string;
-  public picture: string;
-  public photos: string[];
-  public weather:  { [key: string]: number | string };
-  public profile: { [key: string]: number | string };
-  public stars: number;
+export interface IHotel {
+  id: number;
+  title: string;
+  address: string;
+  description: string;
+  phone: string;
+  picture: string;
+  photos: string[];
+  weather:  { [key: string]: number | string };
+  profile: { [key: string]: number | string };
+  stars: number;
 }
 
-export class IFilterType {
-  public stars: string | number;
-  public search: string;
+export interface IFilterType {
+  stars: string | number;
+  search: string;
 }

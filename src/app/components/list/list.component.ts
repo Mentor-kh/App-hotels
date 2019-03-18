@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Hotel } from '../../dataTypes';
+import { IHotel } from '../../dataTypes';
 
 
 @Component({
@@ -8,31 +8,32 @@ import { Hotel } from '../../dataTypes';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
-  @Input() public currentHotel: Hotel;
-  @Input() public favoriteHotels: Hotel[];
-  @Input() public hotels: EventEmitter<Hotel[]> = new EventEmitter<Hotel[]>();
-  @Input() public filteredHotelsExport: EventEmitter<Hotel[]> = new EventEmitter<Hotel[]>();
-  @Output() public favoriteHotelsExport: EventEmitter<Hotel[]> = new EventEmitter<Hotel[]>();
-  @Output() public currentHotelId: EventEmitter<number> = new EventEmitter<number>();
+  public searchValue: string;
+  public starsValue: string | number;
+  @Input() public favoriteHotels: IHotel[];
+  @Input() public activeHotel: IHotel;
+  @Input() public hotels: EventEmitter<IHotel[]> = new EventEmitter<IHotel[]>();
+  @Input() public searchValueExport: EventEmitter<string> = new EventEmitter<string>();
+  @Input() public starsValueExport: EventEmitter<string | number> = new EventEmitter<string | number>();
+  @Output() public addFavoriteHotel: EventEmitter<IHotel> = new EventEmitter<IHotel>();
+  @Output() public activeHotelEmit: EventEmitter<IHotel> = new EventEmitter<IHotel>();
 
   public title: string = 'Righteous indignation & like';
 
-  public setCurrentHotel(hotel: Hotel): void {
-    this.currentHotelId.emit(hotel.id);
+  public setCurrentHotel(hotel: IHotel): void {
+    this.activeHotelEmit.emit(hotel);
   }
 
-  public addToFavorites($event: Event, hotel: Hotel): void {
+  public addToFavorites($event: Event, hotel: IHotel): void {
     $event.preventDefault();
     $event.stopPropagation();
-    if (this.favoriteHotels && !this.favoriteHotels.find((favoriteHotel: Hotel) => hotel.id === favoriteHotel.id)) {
-      this.favoriteHotels.push(hotel);
-      this.favoriteHotelsExport.emit(this.favoriteHotels);
-    } else {
-      alert('This hotel already exist in favorites');
-    }
+    this.addFavoriteHotel.emit(hotel);
   }
 
-  public filterHotels(filteredHotelsExport: EventEmitter<Hotel[]>): void {
-    this.hotels = filteredHotelsExport;
+  public searchHotels(searchValueExport: string): void {
+    this.searchValue = searchValueExport;
+  }
+  public filterHotels(starsValueExport: string | number): void {
+    this.starsValue = starsValueExport;
   }
 }

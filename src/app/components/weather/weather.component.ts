@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Hotel } from '../../dataTypes';
 
 @Component({
   selector: 'app-weather',

@@ -3,15 +3,15 @@
   <div class="element-left">
     <app-list
     [hotels]="hotels"
-    [currentHotel]="currentHotel"
-    (currentHotelId)="setHotel($event)"
+    [activeHotel]="activeHotel"
+    (activeHotelEmit)="setActiveHotel($event)"
     [favoriteHotels]="favoriteHotels"
-    (favoriteHotelsExport)="changeFavorites($event)"
+    (addFavoriteHotel)="addToFavorites($event)"
     ></app-list>
   </div>
   <div class="element-right">
-    <app-weather [currentWeather]="currentHotel.weather"></app-weather>
-    <app-profile [currentProfile]="currentHotel.profile"></app-profile>
+    <app-weather [currentWeather]="activeHotel.weather"></app-weather>
+    <app-profile [currentProfile]="activeHotel.profile"></app-profile>
   </div>
 </div>
 <div class="clear"></div>
@@ -19,7 +19,7 @@
   <div class="element-left">
     <app-favorites
     [favoriteHotels]="favoriteHotels"
-    (favoriteHotelsExport)="changeFavorites($event)"
+    (removeFromFavorites)="removeFavoriteHotel($event)"
     ></app-favorites>
   </div>
 </div>

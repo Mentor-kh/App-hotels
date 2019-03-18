@@ -1,6 +1,6 @@
-import { Hotel } from './dataTypes';
+import { IHotel } from './dataTypes';
 
-export const HOTELS: Hotel[] = [
+export const HOTELS: IHotel[] = [
   {
     id: 0,
     title: 'Universal Cabana',

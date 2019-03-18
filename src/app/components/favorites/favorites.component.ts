@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Hotel } from '../../dataTypes';
+import { IHotel } from '../../dataTypes';
 
 
 @Component({
@@ -8,12 +8,11 @@ import { Hotel } from '../../dataTypes';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent {
-  public listFavorites: Hotel[] = [];
-  @Output() public favoriteHotelsExport: EventEmitter<Hotel[]> = new EventEmitter<Hotel[]>();
-  @Input() public favoriteHotels: Hotel[];
+  public listFavorites: IHotel[] = [];
+  @Output() public removeFromFavorites: EventEmitter<IHotel> = new EventEmitter<IHotel>();
+  @Input() public favoriteHotels: IHotel[];
 
-  public removeFromFavorites(hotelToRemove: Hotel): void {
-    this.listFavorites = this.favoriteHotels.filter((hotel: Hotel) => hotel !== hotelToRemove);
-    this.favoriteHotelsExport.emit(this.listFavorites);
+  public removeHotel(removeFromFavorites: IHotel): void {
+    this.removeFromFavorites.emit(removeFromFavorites);
   }
 }

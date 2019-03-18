@@ -1,7 +1,9 @@
-<div class="element-bg-img"><img src="{{ currentHotel.picture }}" alt="" class="img-responsive"> </div>
+<div class="element-bg-img"><img src="{{ activeHotel.picture }}" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
   <app-filter
-    (filteredHotelsExport)="filterHotels($event)"
+  [hotels]="hotels"
+  (searchValueExport)="searchHotels($event)"
+  (starsValueExport)="filterHotels($event)"
   ></app-filter>
   <div class="village">
     <h3>{{ title }}</h3>
@@ -9,9 +11,9 @@
     <div class="activity_box">
       <div class="scrollbar" id="style-2">
         <div
-        *ngFor="let hotel of hotels; let i = index"
+        *ngFor="let hotel of (hotels | searchFilter: searchValue | starsFilter: starsValue); odd as isOdd"
         class="activity-row"
-        [ngClass]="{'active': hotel.id === currentHotel.id, 'odd': i % 2 !== 0 }"
+        [ngClass]="{'active': hotel.id === activeHotel.id, 'odd': isOdd }"
         (click)="setCurrentHotel(hotel)"
         >
           <div class="activity-desc">

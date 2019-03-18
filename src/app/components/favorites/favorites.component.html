@@ -1,15 +1,15 @@
 <div class="favorites">
-  <h2 *ngIf="favoriteHotels.length === 0">
+  <h2 *ngIf="!favoriteHotels.length">
     Here will be your favorites hotels!
   </h2>
-  <div *ngIf="favoriteHotels.length !== 0">
+  <div *ngIf="favoriteHotels.length">
   <h2>
     Your favorite hotels:
   </h2>
   <ul>
     <li *ngFor="let hotel of favoriteHotels">
       {{ hotel.title }}
-      <a (click)="removeFromFavorites(hotel)" href="#" class="remove">X</a>
+      <a (click)="removeHotel(hotel)" href="#" class="remove">X</a>
     </li>
   </ul>
   </div>
