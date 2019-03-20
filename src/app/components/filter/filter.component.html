@@ -1,5 +1,5 @@
 <div class="ele-strip">
-  <span class="filter-heading">Filter stars</span>
+  <span class="filter-heading">Filter by stars</span>
   <ul class="filter">
     <li><label><input [(ngModel)]="filter.stars" value="*" name="filterStars" type="radio" checked> <span>All</span></label></li>
     <li><label><input [(ngModel)]="filter.stars" value="3" name="filterStars" type="radio"> <span>3</span></label></li>
@@ -9,6 +9,8 @@
   <span class="line"> </span>
   <div class="search">
     <label for="search">Search</label>
-    <input [(ngModel)]="filter.search" type="text" placeholder="Type name or description here">
+    <mat-form-field>
+        <input matInput [(ngModel)]="filter.search" type="text" placeholder="Type name or description here">
+    </mat-form-field>
   </div>
 </div>

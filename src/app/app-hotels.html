@@ -9,7 +9,7 @@
     (addFavoriteHotel)="addToFavorites($event)"
     ></app-list>
   </div>
-  <div class="element-right">
+  <div class="element-right" *ngIf="activeHotel">
     <app-weather [currentWeather]="activeHotel.weather"></app-weather>
     <app-profile [currentProfile]="activeHotel.profile"></app-profile>
   </div>

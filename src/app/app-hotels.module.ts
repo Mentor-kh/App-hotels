@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 
 import { StarsFilterPipe } from './stars-filter.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
@@ -11,6 +13,9 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FilterComponent } from './components/filter/filter.component';
+
+import { LoadingService } from './services/loading.service';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +30,16 @@ import { FilterComponent } from './components/filter/filter.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    LoadingService,
+    NotificationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
