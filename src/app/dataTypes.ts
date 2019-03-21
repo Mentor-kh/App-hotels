@@ -6,12 +6,24 @@ export interface IHotel {
   phone: string;
   picture: string;
   photos: string[];
-  weather:  { [key: string]: number | string };
-  profile: { [key: string]: number | string };
+  weather: IWeather;
+  profile: IProfile;
   stars: number;
 }
 
 export interface IFilterType {
   stars: string | number;
   search: string;
+}
+
+export interface IWeather {
+  temperature: number;
+  wind: number;
+  icon: string;
+}
+
+export interface IProfile {
+  followers: number;
+  following: number;
+  photo: string;
 }

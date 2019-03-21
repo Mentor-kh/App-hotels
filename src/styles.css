@@ -269,7 +269,7 @@ span.line {
   width: 103px;
   height: 2px;
   display: block;
-  margin: .6em auto 0;
+  margin: .6em auto;
 }
 span.w-line {
   background: url(/assets/images/w-line.png)no-repeat;
@@ -466,7 +466,7 @@ i.text-info {
   height: 315px;
   background: #fff;
   overflow-y: scroll;
-  padding: 1em 1em 0 .5em;
+  padding: 0 1em 0 .5em;
 }
 .activity_box {
   background: #fff;

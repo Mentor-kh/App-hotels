@@ -1,7 +1,6 @@
 <div class="element-bg-img" *ngIf="hotels"><img src="{{ activeHotel.picture }}" alt="" class="img-responsive"> </div>
 <div class="element-left-bottom">
   <app-filter
-  [hotels]="hotels"
   (searchValueExport)="searchHotels($event)"
   (starsValueExport)="filterHotels($event)"
   ></app-filter>

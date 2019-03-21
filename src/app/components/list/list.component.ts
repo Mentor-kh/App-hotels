@@ -10,11 +10,8 @@ import { IHotel } from '../../dataTypes';
 export class ListComponent {
   public searchValue: string;
   public starsValue: string | number;
-  @Input() public favoriteHotels: IHotel[];
   @Input() public activeHotel: IHotel;
   @Input() public hotels: EventEmitter<IHotel[]> = new EventEmitter<IHotel[]>();
-  @Input() public searchValueExport: EventEmitter<string> = new EventEmitter<string>();
-  @Input() public starsValueExport: EventEmitter<string | number> = new EventEmitter<string | number>();
   @Output() public addFavoriteHotel: EventEmitter<IHotel> = new EventEmitter<IHotel>();
   @Output() public activeHotelEmit: EventEmitter<IHotel> = new EventEmitter<IHotel>();
 

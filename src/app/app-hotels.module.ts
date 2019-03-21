@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 
-import { StarsFilterPipe } from './stars-filter.pipe';
-import { SearchFilterPipe } from './search-filter.pipe';
+import { StarsFilterPipe } from './pipes/stars-filter.pipe';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 import { AppComponent } from './app-hotels';
 import { ListComponent } from './components/list/list.component';

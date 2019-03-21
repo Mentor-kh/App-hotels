@@ -13,9 +13,6 @@ export class AppComponent {
   public hotels: IHotel[];
   public favoriteHotels: IHotel[] = [];
   public activeHotel: IHotel;
-  @Input() public activeHotelEmit: EventEmitter<IHotel> = new EventEmitter();
-  @Input() public removeFromFavorites: EventEmitter<IHotel> = new EventEmitter();
-  @Input() public addFavoriteHotel: EventEmitter<IHotel> = new EventEmitter();
 
   public constructor(
     private loadingService: LoadingService,

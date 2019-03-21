@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IHotel } from './dataTypes';
+import { IHotel } from '../dataTypes';
 
 @Pipe({name: 'searchFilter'})
 export class SearchFilterPipe implements PipeTransform {
